@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import Input from "./input";
+import Input from "./Input";
 import {Button} from "@mui/material";
 import './login.css'
+import {Link} from "react-router-dom";
+
 
 
 
@@ -13,21 +15,26 @@ const SignIn = () => {
         e.preventDefault();
 
         console.log('Submitting:', { email, password });
-        // Reset fields after submission (optional)
+    };
+
+    const handleReset = () => {
         setEmail('');
         setPassword('');
-    };
+    }
 
 
     return (
         <form
+            onReset={handleReset}
             className={'form'}
             onSubmit={handleSubmit}
         >
-            <Input value={email} type={'text'} placeHolder={'email'} onChange={(e) => setEmail(e.target.value)}/>
-            <Input value={password} type={'password'} placeHolder={'password'} onChange={(e) => setPassword(e.target.value)}/>
+            <Input value={email} type={'text'} placeholder={'email'} onChange={(e) => setEmail(e.target.value)}/>
+            <Input value={password} type={'password'} placeholder={'password'} onChange={(e) => setPassword(e.target.value)}/>
             <Button type={'submit'}>Войти</Button>
             <Button type={"reset"}>Сброс</Button>
+            <p>Нет регистрации ? <Link to={'/register'}>перейти</Link></p>
+
         </form>
     );
 };
