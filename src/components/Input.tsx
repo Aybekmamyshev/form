@@ -1,7 +1,5 @@
 import React from 'react';
 import {TextField} from "@mui/material";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 
 interface PropsInput {
@@ -21,7 +19,7 @@ interface PropsInput {
     asterisk?: boolean
     icon?: React.ReactNode
     className?: string,
-    color?: 'primary'
+    colorValue?: 'primary'
         | 'secondary'
         | 'error'
         | 'info'
@@ -46,7 +44,7 @@ const Input = (
         radius,
         icon,
         className,
-        color,
+        colorValue,
         errorValue
     }: PropsInput) => {
     return (
@@ -60,6 +58,8 @@ const Input = (
                 {label}
                 {asterisk && <span style={{color: "red"}}>*</span>}
                 <TextField
+                    style={{color:`${errorValue && 'red'}`}}
+                    className={className}
                     value={value}
                     placeholder={placeholder}
                     type={type}
@@ -68,7 +68,7 @@ const Input = (
                     disabled={disabled}
                     error={error}
                     size={size}
-                    color={color}
+                    color={colorValue}
                 />
                 <span>{icon}</span>
                 <span style={{color: 'red'}}>{errorValue}</span>

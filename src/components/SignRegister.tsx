@@ -58,7 +58,7 @@ const SignRegister = () => {
                 onSubmit={handleRegister}
                 onReset={handleReset}
             >
-                <Input variant={variant} asterisk={asterisk} disabled={disabled} type={'text'} placeholder={'name'}
+                <Input size={'small'} variant={variant} asterisk={asterisk} disabled={disabled} type={'text'} placeholder={'name'}
                        value={name}
                        onChange={(e) => setName(e.target.value)}/>
                 <Input variant={variant} asterisk={asterisk} disabled={disabled} type={'text'} placeholder={'nickName'} value={nick}
@@ -76,7 +76,12 @@ const SignRegister = () => {
                 <Input variant={variant} asterisk={asterisk} disabled={disabled} placeholder={'description'} description={description}
                        value={description}
                        onChange={(e) => setDescription(e.target.value)}/>
-                <Input variant={variant} asterisk={asterisk} disabled={disabled} errorValue={errorValue} color={'warning'}
+                <Input variant={variant}
+                       asterisk={asterisk}
+                       disabled={disabled}
+                       errorValue={errorValue}
+                       colorValue={'warning'}
+                       className={'input'}
                        placeholder={'error'}
                        value={errorValue} onChange={(e) => setErrorValue(e.target.value)}
                        error={Boolean(errorValue) && true}/>
